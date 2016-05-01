@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cyrils.org/about/index.html</loc>
+    
+    <lastmod>2016-05-01T19:44:54.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.cyrils.org/tags/index.html</loc>
+    
+    <lastmod>2016-05-01T19:42:51.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cyrils.org/2016/05/02/hello-world/</loc>
     
     <lastmod>2016-05-01T17:53:06.000Z</lastmod>
