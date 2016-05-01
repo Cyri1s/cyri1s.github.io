@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cyrils.org/2016/05/02/MySQL-Trigger-Backdoor/</loc>
+    
+    <lastmod>2016-05-01T20:23:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cyrils.org/about/index.html</loc>
     
     <lastmod>2016-05-01T20:14:26.000Z</lastmod>
