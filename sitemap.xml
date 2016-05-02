@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.cyrils.org/2016/05/02/Reverse-Shell-Conclusion/</loc>
+    
+    <lastmod>2016-05-02T06:26:45.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.cyrils.org/2016/05/02/MySQL-Trigger-Backdoor/</loc>
     
     <lastmod>2016-05-02T06:18:01.000Z</lastmod>
